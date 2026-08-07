@@ -1,0 +1,61 @@
+{
+  "name": "Investment",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string"
+    },
+    "plan_id": {
+      "type": "string"
+    },
+    "plan_name": {
+      "type": "string"
+    },
+    "amount_invested": {
+      "type": "number"
+    },
+    "roi_rate": {
+      "type": "number",
+      "description": "Annual ROI percentage e.g. 5.2"
+    },
+    "duration_months": {
+      "type": "number"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "maturity_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "current_value": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "matured",
+        "withdrawn"
+      ],
+      "default": "active"
+    },
+    "last_updated": {
+      "type": "string"
+    },
+    "reference": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "owner_email",
+    "plan_id",
+    "plan_name",
+    "amount_invested",
+    "roi_rate",
+    "duration_months",
+    "start_date",
+    "maturity_date"
+  ]
+}

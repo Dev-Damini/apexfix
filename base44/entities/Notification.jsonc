@@ -1,0 +1,43 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "transfer_out",
+        "transfer_in",
+        "deposit",
+        "card",
+        "security",
+        "admin",
+        "system"
+      ],
+      "default": "system"
+    },
+    "read": {
+      "type": "boolean",
+      "default": false
+    },
+    "amount": {
+      "type": "number"
+    },
+    "reference": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "owner_email",
+    "title",
+    "message"
+  ]
+}

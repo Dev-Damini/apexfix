@@ -1,0 +1,62 @@
+{
+  "name": "Transaction",
+  "type": "object",
+  "properties": {
+    "account_id": {
+      "type": "string",
+      "description": "Account ID this transaction belongs to"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "credit",
+        "debit"
+      ],
+      "description": "Credit = money in, Debit = money out"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "transfer",
+        "deposit",
+        "withdrawal",
+        "payment",
+        "refund",
+        "admin_credit"
+      ],
+      "default": "transfer"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "pending",
+        "failed"
+      ],
+      "default": "completed"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "recipient_account": {
+      "type": "string"
+    },
+    "sender_account": {
+      "type": "string"
+    },
+    "owner_email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "account_id",
+    "type",
+    "amount"
+  ]
+}

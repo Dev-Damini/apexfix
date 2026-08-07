@@ -1,0 +1,62 @@
+{
+  "name": "RecurringTransfer",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string"
+    },
+    "from_account_id": {
+      "type": "string"
+    },
+    "to_account_number": {
+      "type": "string"
+    },
+    "to_account_name": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "weekly",
+        "biweekly",
+        "monthly"
+      ],
+      "default": "monthly"
+    },
+    "next_run_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "cancelled"
+      ],
+      "default": "active"
+    },
+    "runs_completed": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "owner_email",
+    "from_account_id",
+    "to_account_number",
+    "amount",
+    "frequency",
+    "next_run_date"
+  ]
+}

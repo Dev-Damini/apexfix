@@ -1,0 +1,59 @@
+{
+  "name": "Transfer",
+  "type": "object",
+  "properties": {
+    "from_account_id": {
+      "type": "string"
+    },
+    "to_account_number": {
+      "type": "string"
+    },
+    "to_account_name": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
+    },
+    "transfer_type": {
+      "type": "string",
+      "enum": [
+        "instant",
+        "scheduled"
+      ],
+      "default": "instant"
+    },
+    "scheduled_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "pending",
+        "scheduled",
+        "failed",
+        "cancelled"
+      ],
+      "default": "pending"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "owner_email": {
+      "type": "string"
+    },
+    "failure_reason": {
+      "type": "string",
+      "description": "Reason provided by admin when failing a transfer"
+    }
+  },
+  "required": [
+    "from_account_id",
+    "to_account_number",
+    "amount"
+  ]
+}

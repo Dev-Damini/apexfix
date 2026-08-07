@@ -1,0 +1,27 @@
+{
+  "name": "ApexBank — Modern Banking",
+  "short_name": "ApexBank",
+  "description": "Secure, fast, and modern digital banking. Manage accounts, transfers, investments, and more.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0f14",
+  "theme_color": "#c9a84c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://media.base44.com/images/public/69f060d7f1fdeb555838bb76/a9ceb1f3d_D520345B-7989-4CA6-A6AF-824A722AAE5E.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://media.base44.com/images/public/69f060d7f1fdeb555838bb76/a9ceb1f3d_D520345B-7989-4CA6-A6AF-824A722AAE5E.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["finance", "banking"],
+  "lang": "en"
+}

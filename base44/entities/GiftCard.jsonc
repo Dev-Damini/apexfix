@@ -1,0 +1,61 @@
+{
+  "name": "GiftCard",
+  "type": "object",
+  "properties": {
+    "owner_email": {
+      "type": "string"
+    },
+    "owner_name": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string",
+      "description": "e.g. Amazon, Apple, Visa Gift Card"
+    },
+    "card_code": {
+      "type": "string",
+      "description": "The gift card redemption code"
+    },
+    "pin_code": {
+      "type": "string",
+      "description": "PIN on the back of the card if applicable"
+    },
+    "declared_amount": {
+      "type": "number",
+      "description": "Dollar value of the gift card"
+    },
+    "front_image_url": {
+      "type": "string",
+      "description": "Photo of front of the gift card"
+    },
+    "back_image_url": {
+      "type": "string",
+      "description": "Photo of back of the gift card"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "credited",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "admin_note": {
+      "type": "string",
+      "description": "Admin response/reason"
+    },
+    "credited_amount": {
+      "type": "number",
+      "description": "Actual amount credited by admin"
+    }
+  },
+  "required": [
+    "owner_email",
+    "declared_amount"
+  ]
+}

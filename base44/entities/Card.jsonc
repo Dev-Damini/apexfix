@@ -1,0 +1,80 @@
+{
+  "name": "Card",
+  "type": "object",
+  "properties": {
+    "account_id": {
+      "type": "string"
+    },
+    "card_number": {
+      "type": "string",
+      "description": "Masked card number"
+    },
+    "card_type": {
+      "type": "string",
+      "enum": [
+        "visa",
+        "mastercard"
+      ],
+      "default": "visa"
+    },
+    "card_tier": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "gold",
+        "platinum"
+      ],
+      "default": "standard"
+    },
+    "expiry_date": {
+      "type": "string"
+    },
+    "cvv": {
+      "type": "string",
+      "description": "3-digit CVV (only visible after activation)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "frozen",
+        "expired",
+        "cancelled",
+        "inactive"
+      ],
+      "default": "inactive"
+    },
+    "activated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the card has been activated"
+    },
+    "freeze_locked": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, the user cannot unfreeze the card \u2014 only admin can change freeze status"
+    },
+    "daily_limit": {
+      "type": "number",
+      "default": 5000
+    },
+    "owner_email": {
+      "type": "string"
+    },
+    "custom_color": {
+      "type": "string",
+      "default": "midnight",
+      "description": "User's chosen card color"
+    },
+    "custom_style": {
+      "type": "string",
+      "default": "classic",
+      "description": "User's chosen card style"
+    }
+  },
+  "required": [
+    "account_id",
+    "card_number",
+    "owner_email"
+  ]
+}

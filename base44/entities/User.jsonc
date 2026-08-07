@@ -1,0 +1,50 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "default": "user"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "User's chosen display name, shown instead of full_name"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "string"
+    },
+    "profile_picture": {
+      "type": "string"
+    },
+    "transaction_pin": {
+      "type": "string"
+    },
+    "two_fa_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "biometric_login": {
+      "type": "boolean",
+      "default": false
+    },
+    "biometric_transfers": {
+      "type": "boolean",
+      "default": false
+    },
+    "alert_threshold": {
+      "type": "number",
+      "default": 100
+    },
+    "admin_since": {
+      "type": "string",
+      "description": "ISO timestamp of when this user was first granted admin role \u2014 used to restrict support chat history access"
+    }
+  }
+}

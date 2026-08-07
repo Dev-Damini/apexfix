@@ -1,0 +1,54 @@
+{
+  "name": "SupportMessage",
+  "type": "object",
+  "properties": {
+    "conversation_id": {
+      "type": "string",
+      "description": "Groups messages into a conversation thread"
+    },
+    "sender_email": {
+      "type": "string"
+    },
+    "sender_name": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "customer",
+        "admin"
+      ],
+      "default": "customer"
+    },
+    "read": {
+      "type": "boolean",
+      "default": false
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Optional image/file attachment URL"
+    },
+    "deleted": {
+      "type": "boolean",
+      "default": false,
+      "description": "Soft-deleted \u2014 moved to trash bin"
+    },
+    "deleted_at": {
+      "type": "string",
+      "description": "ISO timestamp when the message/conversation was moved to trash"
+    },
+    "deleted_by": {
+      "type": "string",
+      "description": "Email of the admin who deleted it"
+    }
+  },
+  "required": [
+    "conversation_id",
+    "sender_email",
+    "message",
+    "role"
+  ]
+}
