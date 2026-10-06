@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/lib/AuthContext';
-import { auth } from '@/api/base44Client';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Link } from 'react-router-dom';
+import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -16,16 +14,13 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
     try {
-      await login(email, password);
-      navigate('/dashboard');
+      await base44.auth.loginViaEmailPassword(email, password);
+      window.location.href = '/dashboard';
     } catch (err) {
       setError(err?.message || 'Invalid email or password. Please try again.');
     } finally {
@@ -33,25 +28,13 @@ export default function Login() {
     }
   };
 
-  const handleGoogle = async () => {
-    setError('');
-    setLoading(true);
-    try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      navigate('/dashboard');
-    } catch (err) {
-      setError(err?.message || 'Google sign-in failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+  const handleGoogle = () => {
+    base44.auth.loginWithProvider('google', '/dashboard');
   };
 
   return (
-    <div 
-      className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-12"
-      style={{ paddingTop: 'env(safe-area-inset-top, 1rem)' }}
-    >
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-12"
+      style={{ paddingTop: 'env(safe-area-inset-top, 1rem)' }}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -75,8 +58,7 @@ export default function Login() {
           <button
             type="button"
             onClick={handleGoogle}
-            disabled={loading}
-            className="w-full flex items-center justify-center gap-3 py-2.5 rounded-xl border border-border bg-background hover:bg-secondary transition-all text-sm font-medium disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-3 py-2.5 rounded-xl border border-border bg-background hover:bg-secondary transition-all text-sm font-medium"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -124,11 +106,8 @@ export default function Login() {
                   required
                   autoComplete="current-password"
                 />
-                <button 
-                  type="button" 
-                  onClick={() => setShowPass(v => !v)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                >
+                <button type="button" onClick={() => setShowPass(v => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                   {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
